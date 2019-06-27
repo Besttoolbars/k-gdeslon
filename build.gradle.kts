@@ -6,27 +6,23 @@ plugins {
     `maven-publish`
     id("com.jfrog.bintray") version "1.8.4"
     id("com.gradle.build-scan") version "2.3"
-    kotlin("jvm") version "1.3.31"
+    kotlin("jvm") version "1.3.40"
 }
 
 group = "net.besttoolbars"
-version = "0.3.0"
+version = "0.4.0"
 
 repositories {
-    mavenCentral()
+    jcenter()
+    maven { url = uri("https://dl.bintray.com/besttoolbars/repo") }
 }
 
 
 val junit = "5.4.0"
-val jackson = "2.9.8"
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
-    implementation("com.fasterxml.jackson.core:jackson-databind:$jackson")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jackson")
-    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:$jackson")
-    implementation("commons-io:commons-io:2.6")
-    api("org.apache.httpcomponents:httpclient:4.5.7")
+    api("net.besttoolbars:affiliate-connector-core:0.0.2")
 
     testImplementation("org.mockito:mockito-junit-jupiter:2.25.0")
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junit")
@@ -95,5 +91,5 @@ bintray {
 
 buildScan {
     termsOfServiceUrl = "https://gradle.com/terms-of-service"
-    setTermsOfServiceAgree("yes")
+    termsOfServiceAgree = "yes"
 }
