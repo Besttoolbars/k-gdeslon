@@ -1,17 +1,13 @@
 package net.besttoolbars.gdeslon
 
+import net.besttoolbars.affiliate.core.HttpHandler
 import java.io.InputStream
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
 import java.net.http.HttpResponse
 import java.util.concurrent.CompletableFuture
 
-interface GdeslonHttpHandler {
-    fun executeRequest(request: HttpRequest): CompletableFuture<InputStream>
-}
-
-class GdeslonHttpClient(private val client: HttpClient = HttpClient.newHttpClient()) :
-    GdeslonHttpHandler {
+class GdeslonHttpClient(private val client: HttpClient = HttpClient.newHttpClient()) : HttpHandler {
     override fun executeRequest(request: HttpRequest): CompletableFuture<InputStream> {
         return client.sendAsync(request, HttpResponse.BodyHandlers.ofInputStream())
             .thenApply { it.body() }
