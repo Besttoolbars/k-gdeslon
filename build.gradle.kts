@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "net.besttoolbars"
-version = "0.4.1"
+version = "0.4.2"
 
 repositories {
     jcenter()
@@ -22,7 +22,7 @@ val junit = "5.4.0"
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
-    api("net.besttoolbars:affiliate-connector-core:0.0.3")
+    api("net.besttoolbars:affiliate-connector-core:0.0.4")
 
     testImplementation("org.mockito:mockito-junit-jupiter:2.25.0")
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junit")
